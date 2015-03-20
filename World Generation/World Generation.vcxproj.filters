@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Overworld">
+      <UniqueIdentifier>{5f173e1b-9dd0-4c89-b525-4ad5088aaee8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Overworld\Biome">
+      <UniqueIdentifier>{1c7b7756-32d0-4a89-be8b-1da3972ccf40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Biomes">
+      <UniqueIdentifier>{08dfb06f-3925-4000-a74b-d554fdfb1aca}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Sprawl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Zone.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TileInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Generation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Perlin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Biome.h">
+      <Filter>Header Files\Biomes</Filter>
+    </ClInclude>
+    <ClInclude Include="BiomeSelector.h">
+      <Filter>Header Files\Biomes</Filter>
+    </ClInclude>
+    <ClInclude Include="Forest.h">
+      <Filter>Header Files\Biomes</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Biome.cpp">
+      <Filter>Source Files\Overworld\Biome</Filter>
+    </ClCompile>
+    <ClCompile Include="BiomeSelector.cpp">
+      <Filter>Source Files\Overworld\Biome</Filter>
+    </ClCompile>
+    <ClCompile Include="Generation.cpp">
+      <Filter>Source Files\Overworld</Filter>
+    </ClCompile>
+    <ClCompile Include="Perlin.cpp">
+      <Filter>Source Files\Overworld</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprawl.cpp">
+      <Filter>Source Files\Overworld</Filter>
+    </ClCompile>
+    <ClCompile Include="Forest.cpp">
+      <Filter>Source Files\Overworld\Biome</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
