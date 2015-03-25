@@ -6,7 +6,7 @@ namespace Generation
 	{
 
 
-		Forest(){ Name = FOREST; }
+		Forest(){ Type = FOREST; }
 		~Forest(){}
 
 	};

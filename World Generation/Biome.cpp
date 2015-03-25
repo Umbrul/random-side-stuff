@@ -19,7 +19,7 @@ namespace Generation
 			total += factorAffinity(biome);
 
 		if (useBiome)
-			total += biomeAffinity(biome.Name);
+			total += biomeAffinity(biome.Type);
 
 		return (total > 0) ? total : 0;
 
@@ -132,7 +132,7 @@ namespace Generation
 
 	}
 
-	short Biome::biomeAffinity(BiomeName biome)
+	short Biome::biomeAffinity(BiomeType biome)
 	{
 		if (Type == FOREST)
 		{

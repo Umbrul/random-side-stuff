@@ -6,6 +6,8 @@
 #include "Sprawl.h"
 #include "Perlin.h"
 #include "TileInfo.h"
+#include "BiomeCreation.h"
+#include "Random.h"
 
 namespace Generation
 {
@@ -28,11 +30,18 @@ namespace Generation
 		TileInfo ** HeightMap = NULL;
 		TileInfo *** Map = NULL;
 		std::vector<Zone> * Zones = NULL;
+		Random * random = NULL;
+
+		Generate::Generate()
+		{
+			random = new Random();
+		}
 
 		int chunk_length = 10;
 		int chunk_width = 10;
 		int chunk_height = 10;
 
+		void Generate::terrain_picker_test();
 		void DisplayLayer(int layer);
 		void DisplayLayers();
 		void HeightToMap();

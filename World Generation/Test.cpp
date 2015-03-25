@@ -5,7 +5,11 @@ int main(void)
 {
 	
 	Generate test = Generate();
-	test.perlin_sprawl();
+
+	//test.perlin_sprawl();
+
+	std::cout << std::endl << std::endl << "Current Seed: " << seed << std::endl;
+	test.terrain_picker_test();
 	
 	/*
 	int *a = 0;

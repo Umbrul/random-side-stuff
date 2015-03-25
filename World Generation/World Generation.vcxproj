@@ -79,7 +79,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Biome.cpp" />
-    <ClCompile Include="BiomeSelector.cpp" />
+    <ClCompile Include="BiomeCreation.cpp" />
     <ClCompile Include="Forest.cpp" />
     <ClCompile Include="Generation.cpp" />
     <ClCompile Include="Perlin.cpp" />
@@ -88,10 +88,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Biome.h" />
-    <ClInclude Include="BiomeSelector.h" />
+    <ClInclude Include="BiomeCreation.h" />
+    <ClInclude Include="BiomeTable.h" />
     <ClInclude Include="Forest.h" />
     <ClInclude Include="Generation.h" />
     <ClInclude Include="Perlin.h" />
+    <ClInclude Include="Random.h" />
     <ClInclude Include="TileInfo.h" />
     <ClInclude Include="Sprawl.h" />
     <ClInclude Include="Zone.h" />

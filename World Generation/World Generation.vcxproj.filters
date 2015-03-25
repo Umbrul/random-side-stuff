@@ -22,6 +22,9 @@
     <Filter Include="Header Files\Biomes">
       <UniqueIdentifier>{08dfb06f-3925-4000-a74b-d554fdfb1aca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Random">
+      <UniqueIdentifier>{f0bee4c7-8e63-44a7-a346-218808ce5fe7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sprawl.h">
@@ -42,11 +45,17 @@
     <ClInclude Include="Biome.h">
       <Filter>Header Files\Biomes</Filter>
     </ClInclude>
-    <ClInclude Include="BiomeSelector.h">
-      <Filter>Header Files\Biomes</Filter>
-    </ClInclude>
     <ClInclude Include="Forest.h">
       <Filter>Header Files\Biomes</Filter>
+    </ClInclude>
+    <ClInclude Include="BiomeTable.h">
+      <Filter>Header Files\Biomes</Filter>
+    </ClInclude>
+    <ClInclude Include="BiomeCreation.h">
+      <Filter>Header Files\Biomes</Filter>
+    </ClInclude>
+    <ClInclude Include="Random.h">
+      <Filter>Header Files\Random</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -54,9 +63,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Biome.cpp">
-      <Filter>Source Files\Overworld\Biome</Filter>
-    </ClCompile>
-    <ClCompile Include="BiomeSelector.cpp">
       <Filter>Source Files\Overworld\Biome</Filter>
     </ClCompile>
     <ClCompile Include="Generation.cpp">
@@ -69,6 +75,9 @@
       <Filter>Source Files\Overworld</Filter>
     </ClCompile>
     <ClCompile Include="Forest.cpp">
+      <Filter>Source Files\Overworld\Biome</Filter>
+    </ClCompile>
+    <ClCompile Include="BiomeCreation.cpp">
       <Filter>Source Files\Overworld\Biome</Filter>
     </ClCompile>
   </ItemGroup>
