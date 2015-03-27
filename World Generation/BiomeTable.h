@@ -8,36 +8,86 @@
 
 using namespace std;
 namespace Generation
+
 {
 
-	//Table containing temperature and moisture range of each biome 
-	static map<Biome::BiomeType, vector<int>> Reference
+	const int BIOME_WIDTH = 7;
+	const int BIOME_LENGTH = 5;
+	//Table containing temperature and moisture range of each biome. Original approach
+	static map<BiomeType, vector<int>> ReferencebyRange
 	{
 	// moisture min | moisture max | temperature min | temperature max
-		{ Biome::BiomeType::FOREST, { 2, 4, -3, 3 } },
-		{ Biome::BiomeType::GRASSLAND, { -1, 1, -3, 3 } },
-		{ Biome::BiomeType::JUNGLE, { 2, 4, 3, 5 } },
-		{ Biome::BiomeType::DESERT, { -5, -2, -1, 5 } },
-		{ Biome::BiomeType::TUNDRA, { -4, -2, -5, -2 } },
-		{ Biome::BiomeType::BARREN, { -5, -5, 0, 5 } },
-		{ Biome::BiomeType::WASTES, { -5, -5, -5, 0 } },
-		{ Biome::BiomeType::TAIGA, { 2, 4, -5, -2 } },
-		{ Biome::BiomeType::WETLAND, { 5, 5, -5, 5 } },
-		{ Biome::BiomeType::SCRUBLAND, { -3, 1, -5, 5 } }
+		{ BiomeType::FOREST, { 2, 4, -3, 3 } },
+		{ BiomeType::GRASSLAND, { -1, 1, -3, 3 } },
+		{ BiomeType::JUNGLE, { 2, 4, 3, 5 } },
+		{ BiomeType::DESERT, { -5, -2, -1, 5 } },
+		{ BiomeType::TUNDRA, { -4, -2, -5, -2 } },
+		{ BiomeType::BARREN, { -5, -5, 0, 5 } },
+		{ BiomeType::WASTES, { -5, -5, -5, 0 } },
+		{ BiomeType::TAIGA, { 2, 4, -5, -2 } },
+		{ BiomeType::SCRUBLAND, { -3, 1, -5, 5 } }
 
 
 };
 
+	static BiomeType Reference[5][7]
+	{
+		{ BiomeType::WATER, BiomeType::JUNGLE,	BiomeType::JUNGLE,	BiomeType::SCRUBLAND,	BiomeType::DESERT,		BiomeType::DESERT,	BiomeType::BARREN },
+		{ BiomeType::WATER, BiomeType::JUNGLE,	BiomeType::FOREST,	BiomeType::GRASSLAND,	BiomeType::SCRUBLAND,	BiomeType::DESERT,	BiomeType::BARREN },
+		{ BiomeType::WATER, BiomeType::FOREST,	BiomeType::FOREST,	BiomeType::GRASSLAND,	BiomeType::GRASSLAND,	BiomeType::DESERT,	BiomeType::DESOLATION },
+		{ BiomeType::WATER, BiomeType::TAIGA,	BiomeType::FOREST,	BiomeType::GRASSLAND,	BiomeType::SCRUBLAND,	BiomeType::TUNDRA,	BiomeType::WASTES },
+		{ BiomeType::WATER, BiomeType::TAIGA,	BiomeType::TAIGA,	BiomeType::SCRUBLAND,	BiomeType::TUNDRA,		BiomeType::TUNDRA,	BiomeType::WASTES }
+
+	};
+
+	inline char* getName(int id){ return BiomeTypeName[id]; };
+
+	inline vector<BiomeType> getBiomeTypeWithTemperature(short value, bool reference = false)
+	{
+		vector<BiomeType> temp;
+		int it;
+		for (it = 0; it < BIOME_WIDTH; it++)
+		{
+				temp.push_back(Reference[value][it]);
+		}
+		return temp;
+	}
+
+	inline vector<BiomeType> getBiomeTypeWithMoisture(short value, bool reference = false)
+	{
+		vector<BiomeType> temp;
+
+		int it;
+		for (it = 0; it < BIOME_LENGTH; it++)
+		{
+			temp.push_back(Reference[it][value]);
+		}
+		return temp;
+	}
+
+	inline vector<BiomeType> operator + (vector<BiomeType> x, vector<BiomeType> y)
+	{
+		vector<BiomeType> temp;
+		int i, j;
+		for (i = 0; i < x.size(); i++)
+		{
+			for (j = 0; j < y.size(); j++)
+			if (x[i] == y[j])
+				temp.push_back(x[i]);
+		}
+		return temp;
+
+	}
+
+	/*
 	static char* Reference_Names[]{"Forest", "Grassland", "Jungle","Desert","Tundra","Barren","Wastes","Taiga","Wetland","Scrubland"};
-
-
 
 	inline char* getName(int id){ return Reference_Names[id]; };
 
-	inline vector<Biome::BiomeType> getBiomeTypeWithTemperature(short value, bool reference = false)
+	inline vector<BiomeType> getBiomeTypeWithTemperature(short value, bool reference = false)
 	{
-		vector<Biome::BiomeType> temp;
-		for (map<Biome::BiomeType, vector<int>>::iterator it = Reference.begin(); it != Reference.end(); it++)
+		vector<BiomeType> temp;
+		for (map<BiomeType, vector<int>>::iterator it = Reference.begin(); it != Reference.end(); it++)
 		{
 			if(it->second[3] >= value && it->second[2] <= value) 
 				temp.push_back(it->first);
@@ -45,10 +95,10 @@ namespace Generation
 		return temp;
 	}
 
-	inline vector<Biome::BiomeType> getBiomeTypeWithMoisture(short value, bool reference = false)
+	inline vector<BiomeType> getBiomeTypeWithMoisture(short value, bool reference = false)
 	{
-		vector<Biome::BiomeType> temp;
-		for (map<Biome::BiomeType, vector<int>>::iterator it = Reference.begin(); it != Reference.end(); it++)
+		vector<BiomeType> temp;
+		for (map<BiomeType, vector<int>>::iterator it = Reference.begin(); it != Reference.end(); it++)
 		{
 			if (it->second[1] >= value && it->second[0] <= value)
 				temp.push_back(it->first);
@@ -56,9 +106,9 @@ namespace Generation
 		return temp;
 	}
 
-	inline vector<Biome::BiomeType> operator + (vector<Biome::BiomeType> x, vector<Biome::BiomeType> y)
+	inline vector<BiomeType> operator + (vector<BiomeType> x, vector<BiomeType> y)
 	{
-		vector<Biome::BiomeType> temp;
+		vector<BiomeType> temp;
 		int i, j;
 		for (i = 0; i < x.size(); i++)
 		{
@@ -67,7 +117,7 @@ namespace Generation
 				temp.push_back(x[i]);
 		}
 		return temp;
-	}
+	}*/
 
 
 

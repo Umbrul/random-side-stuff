@@ -3,11 +3,12 @@
 
 namespace Generation
 {
+	enum BiomeType { WASTES, DESERT, TUNDRA, BARREN, GRASSLAND, JUNGLE, TAIGA, FOREST, SCRUBLAND, WATER, DESOLATION };
+	static char * BiomeTypeName []{ "WASTES", "DESERT", "TUNDRA", "BARREN", "GRASSLAND", "JUNGLE", "TAIGA", "FOREST", "SCRUBLAND", "WATER", "DESOLATION" };
 	class Biome{
 	public:
 		
 		//Info pertaining to BIOME
-		enum BiomeType { WASTES, DESERT, TUNDRA, BARREN, GRASSLAND, JUNGLE, TAIGA, FOREST, WETLAND, SCRUBLAND, OCEAN, COAST };
 		BiomeType Type;
 		Biome(BiomeType type, short moisture, short temperature){ this -> moisture = moisture; this -> temperature = temperature; elevation = 0;  Type = type; }
 		Biome(){ moisture = 0; temperature = 0; elevation = 0; }
@@ -23,8 +24,8 @@ namespace Generation
 	protected:
 	
 		//Not sure why these, or regular affinity exist... keeping for now
-		short biomeAffinity(BiomeType biome);
-		short factorAffinity(Biome biome);
+		//short biomeAffinity(BiomeType biome);
+		//short factorAffinity(Biome biome);
 
 
 

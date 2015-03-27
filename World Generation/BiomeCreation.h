@@ -17,22 +17,22 @@ namespace Generation
 		result.elevation = reference.elevation;
 
 		y = reference.temperature + rand() % 3 - 1;
-		 if (y > 5)
+		 if (y >= 5)
 			 result.temperature = y - 2;
-		 else if (y < -5)
+		 else if (y < 0)
 			 result.temperature = y + 2;
 		 else
 			 result.temperature = y;
 
 		y = reference.moisture + rand() % 3 - 1;
-		if (y > 5)
+		if (y >= 7)
 			result.moisture = y - 2;
-		else if (y < -5)
+		else if (y < 0)
 			result.moisture = y + 2;
 		else
 			result.moisture = y;
 
-		std::vector<Biome::BiomeType> temp = getBiomeTypeWithMoisture(result.moisture) + getBiomeTypeWithTemperature(result.temperature);
+		vector<BiomeType> temp = getBiomeTypeWithMoisture(result.moisture) + getBiomeTypeWithTemperature(result.temperature);
 		
 		
 		result.Type = temp[rand() % temp.size()];

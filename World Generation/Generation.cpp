@@ -59,7 +59,7 @@ namespace Generation
 	void Generate::terrain_picker_test()
 	{
 		int i;
-		Biome temp = Biome(Biome::BiomeType::GRASSLAND, 0, 0);
+		Biome temp = Biome(BiomeType::GRASSLAND, 0, 0);
 		for (i = 0; i < 100; i++)
 		{
 			temp = deviatiation(temp);

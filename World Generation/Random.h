@@ -16,6 +16,9 @@ namespace Generation
 
 	};
 
+	//Implement PRNG (LCG or Mersenne). Make a variation when needed (one for elevation, temp, moisture,etc).
+	//One completed, mix it + noise functions. 
+
 }
 
 # endif
