@@ -2,8 +2,11 @@
 #define PERLIN_H
 
 #include "TileInfo.h"
-
+#include "Random.h"
 #include "Zone.h"
+#include <time.h>
+#include <stdlib.h>     /* srand, rand */
+#include <iostream>
 
 
 namespace Generation
@@ -12,7 +15,7 @@ namespace Generation
 	{
 		
 	public:
-		Perlin_Sprawl(int length, int width, int height, TileInfo** &map);
+		Perlin_Sprawl(Random* rand, int length, int width, int height, TileInfo** &map);
 		~Perlin_Sprawl();
 		void Print();
 

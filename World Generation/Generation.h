@@ -3,9 +3,15 @@
 
 #include <vector>
 #include <map>
+#include <iostream>
+#include <time.h>  
+#include <math.h>
+#include <vector>
+#include "Random.h"
 #include "Sprawl.h"
 #include "Perlin.h"
-#include "TileInfo.h"
+#include "Constants.h"
+#include "Common.h"
 #include "BiomeCreation.h"
 #include "Random.h"
 
@@ -28,7 +34,8 @@ namespace Generation
 	public:
 
 		TileInfo ** HeightMap = NULL;
-		TileInfo *** Map = NULL;
+		TileInfo ** TemperatureMap = NULL;
+		TileInfo ** MoistureMap = NULL;
 		std::vector<Zone> * Zones = NULL;
 		Random * random = NULL;
 
@@ -37,9 +44,9 @@ namespace Generation
 			random = new Random();
 		}
 
-		int chunk_length = 10;
-		int chunk_width = 10;
-		int chunk_height = 10;
+		int getMoisture(int x, int y);
+		int getTemperature(int x, int y);
+		int getElevation(int x, int y);
 
 		void Generate::terrain_picker_test();
 		void DisplayLayer(int layer);

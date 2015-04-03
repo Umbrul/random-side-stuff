@@ -5,8 +5,7 @@
 #include <iostream>
 #include <time.h>  
 
-namespace Generation
-{
+namespace Generation{
 
 	//Set up empty world map/array. Define world size and sprawl type before here.
 	Sprawl::Sprawl(int length, int width, TileInfo** map, std::vector<Zone>* zones)

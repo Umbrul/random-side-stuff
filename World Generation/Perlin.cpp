@@ -1,7 +1,4 @@
 #include "Perlin.h"
-#include <time.h>
-#include <stdlib.h>     /* srand, rand */
-#include <iostream>
 
 
 namespace Generation
@@ -10,14 +7,16 @@ namespace Generation
 	{
 		double* tempXMap;
 		double* tempYMap;
+		Random* generator;
 	}
 
-	Perlin_Sprawl::Perlin_Sprawl(int length, int width, int height, TileInfo** &map)
+	Perlin_Sprawl::Perlin_Sprawl(Random *gen, int length, int width, int height, TileInfo** &map)
 	{
 		
 		this->length = length; 
 		this->width = width;
 		this->height = height;
+		generator = gen;
 
 		Map = new TileInfo*[length];
 		map = Map;
@@ -79,15 +78,18 @@ namespace Generation
 		std::cout << "current maxFactor: " << maxFactor << std::endl;
 		tempXMap = new double[width];
 		srand(time(NULL));
-
 		for (int i = 0; i < width; i++)
-			tempXMap[i] = double(rand() % ((height * 2 * 10) / 10) + 1) * maxFactor;
+		{
+			tempXMap[i] = double(generator->rand(i, 0, 0) % ((height * 2 * 10) / 10) + 1) * maxFactor;
+
+			std::cout << " Rand x: " << generator->rand(i, 0, 0) << std::endl;
+		}
 
 		tempYMap = new double[length];
 		srand(time(NULL));
 
 		for (int i = 0; i < length; i++)
-			tempYMap[i] = double(rand() % ((height * 2 * 10) / 10) + 1) * maxFactor;
+			tempYMap[i] = double(generator->rand(i,seed,0) % ((height * 2 * 10) / 10) + 1) * maxFactor;
 
 		PerlinNoise2D();
 	}

@@ -41,6 +41,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\GLFW\32\include\GLFW;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\GLFW\32\lib-vc2013;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -53,10 +55,12 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\GLFW\32\include\GLFW</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -80,22 +84,32 @@
   <ItemGroup>
     <ClCompile Include="Biome.cpp" />
     <ClCompile Include="BiomeCreation.cpp" />
+    <ClCompile Include="Common.cpp" />
     <ClCompile Include="Forest.cpp" />
     <ClCompile Include="Generation.cpp" />
+    <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Perlin.cpp" />
+    <ClCompile Include="Random.cpp" />
     <ClCompile Include="Sprawl.cpp" />
-    <ClCompile Include="Test.cpp" />
+    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Biome.h" />
     <ClInclude Include="BiomeCreation.h" />
     <ClInclude Include="BiomeTable.h" />
+    <ClInclude Include="Common.h" />
+    <ClInclude Include="Constants.h" />
     <ClInclude Include="Forest.h" />
     <ClInclude Include="Generation.h" />
+    <ClInclude Include="GlobalMap.h" />
+    <ClInclude Include="Grid.h" />
     <ClInclude Include="Perlin.h" />
+    <ClInclude Include="Point.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="TileInfo.h" />
     <ClInclude Include="Sprawl.h" />
+    <ClInclude Include="Vision.h" />
+    <ClInclude Include="Window.h" />
     <ClInclude Include="Zone.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

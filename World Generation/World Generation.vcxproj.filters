@@ -13,72 +13,120 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Overworld">
-      <UniqueIdentifier>{5f173e1b-9dd0-4c89-b525-4ad5088aaee8}</UniqueIdentifier>
+    <Filter Include="Source Files\Generation">
+      <UniqueIdentifier>{f419ffba-cde0-4bd5-92a2-249006edb360}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Overworld\Biome">
+    <Filter Include="Source Files\Generation\Overworld">
+      <UniqueIdentifier>{208bef9e-277f-498a-aebd-6a26ff837725}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Generation\Random">
+      <UniqueIdentifier>{394cfa57-423b-4531-83fa-d3187da6cb1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Generation\Biome">
       <UniqueIdentifier>{1c7b7756-32d0-4a89-be8b-1da3972ccf40}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Biomes">
+    <Filter Include="Header Files\Generation">
+      <UniqueIdentifier>{1980b201-1cee-4cba-ae80-d669566a43c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Generation\Overworld">
+      <UniqueIdentifier>{1dcba03c-40ba-48a6-bcff-adb638028d5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Generation\Random">
+      <UniqueIdentifier>{f0bee4c7-8e63-44a7-a346-218808ce5fe7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Generation\Biomes">
       <UniqueIdentifier>{08dfb06f-3925-4000-a74b-d554fdfb1aca}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Random">
-      <UniqueIdentifier>{f0bee4c7-8e63-44a7-a346-218808ce5fe7}</UniqueIdentifier>
+    <Filter Include="Header Files\Display">
+      <UniqueIdentifier>{73ebecbf-1114-41bd-af77-9e7eb9c694f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Display">
+      <UniqueIdentifier>{bd005ec0-2a59-4f36-a8fa-15e2dc8c4260}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sprawl.h">
+    <ClInclude Include="Biome.h">
+      <Filter>Header Files\Generation\Biomes</Filter>
+    </ClInclude>
+    <ClInclude Include="Forest.h">
+      <Filter>Header Files\Generation\Biomes</Filter>
+    </ClInclude>
+    <ClInclude Include="BiomeTable.h">
+      <Filter>Header Files\Generation\Biomes</Filter>
+    </ClInclude>
+    <ClInclude Include="BiomeCreation.h">
+      <Filter>Header Files\Generation\Biomes</Filter>
+    </ClInclude>
+    <ClInclude Include="Random.h">
+      <Filter>Header Files\Generation\Random</Filter>
+    </ClInclude>
+    <ClInclude Include="Point.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Sprawl.h">
+      <Filter>Header Files\Generation\Overworld</Filter>
+    </ClInclude>
+    <ClInclude Include="Generation.h">
+      <Filter>Header Files\Generation\Overworld</Filter>
+    </ClInclude>
     <ClInclude Include="Zone.h">
+      <Filter>Header Files\Generation\Overworld</Filter>
+    </ClInclude>
+    <ClInclude Include="Perlin.h">
+      <Filter>Header Files\Generation\Overworld</Filter>
+    </ClInclude>
+    <ClInclude Include="Vision.h">
+      <Filter>Header Files\Display</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>Header Files\Display</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalMap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TileInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Generation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Perlin.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Biome.h">
-      <Filter>Header Files\Biomes</Filter>
-    </ClInclude>
-    <ClInclude Include="Forest.h">
-      <Filter>Header Files\Biomes</Filter>
-    </ClInclude>
-    <ClInclude Include="BiomeTable.h">
-      <Filter>Header Files\Biomes</Filter>
-    </ClInclude>
-    <ClInclude Include="BiomeCreation.h">
-      <Filter>Header Files\Biomes</Filter>
-    </ClInclude>
-    <ClInclude Include="Random.h">
-      <Filter>Header Files\Random</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Test.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Biome.cpp">
-      <Filter>Source Files\Overworld\Biome</Filter>
-    </ClCompile>
-    <ClCompile Include="Generation.cpp">
-      <Filter>Source Files\Overworld</Filter>
-    </ClCompile>
-    <ClCompile Include="Perlin.cpp">
-      <Filter>Source Files\Overworld</Filter>
-    </ClCompile>
-    <ClCompile Include="Sprawl.cpp">
-      <Filter>Source Files\Overworld</Filter>
+      <Filter>Source Files\Generation\Biome</Filter>
     </ClCompile>
     <ClCompile Include="Forest.cpp">
-      <Filter>Source Files\Overworld\Biome</Filter>
+      <Filter>Source Files\Generation\Biome</Filter>
     </ClCompile>
     <ClCompile Include="BiomeCreation.cpp">
-      <Filter>Source Files\Overworld\Biome</Filter>
+      <Filter>Source Files\Generation\Biome</Filter>
+    </ClCompile>
+    <ClCompile Include="Generation.cpp">
+      <Filter>Source Files\Generation\Overworld</Filter>
+    </ClCompile>
+    <ClCompile Include="Perlin.cpp">
+      <Filter>Source Files\Generation\Overworld</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprawl.cpp">
+      <Filter>Source Files\Generation\Overworld</Filter>
+    </ClCompile>
+    <ClCompile Include="Random.cpp">
+      <Filter>Source Files\Generation\Random</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>Source Files\Display</Filter>
+    </ClCompile>
+    <ClCompile Include="Common.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

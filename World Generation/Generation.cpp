@@ -1,34 +1,31 @@
-#include <math.h>
-#include <vector>
 #include "Generation.h"
-#include "Random.h"
-#include <iostream>
-#include <time.h>  
+
 
 namespace Generation
 
 {
+	
 
 	void Generate::HeightToMap()
 	{
-		Map = new TileInfo**[2 * chunk_height + 1];
-		for (int i = 0; i <= 2 *chunk_height; i++)
+		Map::map = new TileInfo**[2 * Constants::MAP_HEIGHT + 1];
+		for (int i = 0; i <= 2 * Constants::MAP_HEIGHT; i++)
 		{
-			Map[i] = new TileInfo*[chunk_length];
-			for (int j = 0; j < chunk_length; j++)
+			Map::map[i] = new TileInfo*[Constants::MAP_LENGTH];
+			for (int j = 0; j < Constants::MAP_LENGTH; j++)
 			{
 
-				Map[i][j] = new TileInfo[chunk_width];
+				Map::map[i][j] = new TileInfo[Constants::MAP_WIDTH];
 
 		
-				for (int k = 0; k < chunk_width; k++)
+				for (int k = 0; k < Constants::MAP_WIDTH; k++)
 				{
-					Map[i][j][k] = TileInfo();
-					Map[i][j][k].zone_id = 0;
-					Map[i][j][k].x = k;
-					Map[i][j][k].y = j;
-					Map[i][j][k].elevation = i-(chunk_height);
-					Map[i][j][k].terrain = (HeightMap[j][k].elevation > Map[i][j][k].elevation) ? 'U' : ((HeightMap[j][k].elevation == Map[i][j][k].elevation) ? 'O': ' ') ;
+					Map::map[i][j][k] = TileInfo();
+					Map::map[i][j][k].zone_id = 0;
+					Map::map[i][j][k].x = k;
+					Map::map[i][j][k].y = j;
+					Map::map[i][j][k].elevation = i - (Constants::MAP_HEIGHT);
+					Map::map[i][j][k].terrain = (HeightMap[j][k].elevation > Map::map[i][j][k].elevation) ? 'U' : ((HeightMap[j][k].elevation == Map::map[i][j][k].elevation) ? 'O' : ' ');
 				
 				}
 
@@ -45,12 +42,12 @@ namespace Generation
 
 	void Generate::perlin_sprawl()
 	{
-		HeightMap = new TileInfo*[chunk_length];
+		HeightMap = new TileInfo*[Constants::MAP_LENGTH];
 		//Step 1 Height Map
-		Generation::Perlin_Sprawl func = Generation::Perlin_Sprawl(chunk_length, chunk_width, chunk_height, HeightMap);
+		Generation::Perlin_Sprawl func = Generation::Perlin_Sprawl(random, Constants::MAP_LENGTH, Constants::MAP_WIDTH, Constants::MAP_HEIGHT, HeightMap);
 		//Step 2 Height Map -> World Map (layers)
 		HeightToMap();
-		DisplayLayers();
+		//DisplayLayers();
 		//Step 3 Cavern
 		//Step 4 Water source + use shortest path algo to create shape. NO uphill (initially). Branching+merging river entities
 		func.Print();
@@ -62,21 +59,21 @@ namespace Generation
 		Biome temp = Biome(BiomeType::GRASSLAND, 0, 0);
 		for (i = 0; i < 100; i++)
 		{
-			temp = deviatiation(temp);
+			temp = BiomeCreation::deviatiation(temp);
 		}
 	}
 
 
 	void Generate::DisplayLayers()
 	{
-		for (int i = 0; i <= 2* chunk_height; ++i)
+		for (int i = 0; i <= 2 * Constants::MAP_HEIGHT; ++i)
 		{
-			std::cout <<"Layer: "<<i-(chunk_height) << std::endl;
-			for (int j = 0; j < chunk_length; ++j)
+			std::cout << "Layer: " << i - (Constants::MAP_HEIGHT) << std::endl;
+			for (int j = 0; j < Constants::MAP_LENGTH; ++j)
 			{
-				for (int k = 0; k < chunk_width; ++k)
+				for (int k = 0; k < Constants::MAP_WIDTH; ++k)
 				{
-					std::cout << Map[i][j][k].terrain << " ";
+					std::cout << Map::map[i][j][k].terrain << " ";
 				}
 
 				std::cout << std::endl;
@@ -89,6 +86,22 @@ namespace Generation
 	void Generate::DisplayLayer(int layer)
 	{
 
+	}
+
+	int Generate::getElevation(int x, int y)
+	{
+		
+		return Map::map[(int)round(y)][(int)round(x)]->elevation;
+	}
+
+	int Generate::getMoisture(int x, int y)
+	{
+		return Map::map[(int)round(y)][(int)round(x)]->moisture;
+	}
+
+	int Generate::getTemperature(int x, int y)
+	{
+		return Map::map[(int)round(y)][(int)round(x)]->temperature;
 	}
 
 
