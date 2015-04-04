@@ -4,35 +4,11 @@
 namespace Display
 {
 
-	
 
-
-	Grid::Grid()
-	{
-		refresh();
-	}
-
-	void Grid::refresh()
-	{
-		height = ortho_top + ((ortho_bottom > 0) ? ortho_bottom : -1 * ortho_bottom);
-		width = ortho_right + ((ortho_left > 0) ? ortho_left : -1 * ortho_left);
-		
-		xGap = width / zoom;
-		yGap = height / zoom;
-
-		xOffsetCenter = (xGap) / 2;
-		yOffsetCenter = (yGap) / 2;
-
-		top = (height/2 - yOffsetMisc - yOffsetCenter) / yGap;
-		bottom = (height / 2 + yOffsetMisc + yOffsetCenter) / yGap *-1;
-		right = (width / 2 - xOffsetMisc - xOffsetCenter) / xGap;
-		left = (width / 2 + xOffsetMisc + xOffsetCenter) / xGap*-1;
-	}
-
-	void Grid::drawPoints()
+	void Grid::draw()
 	{
 
-		float xHalfHeight = width / 2.0;
+		float xHalfWidth = width / 2.0;
 		float yHalfHeight = height / 2.0;
 
 
@@ -54,27 +30,18 @@ namespace Display
 		glBegin(GL_LINES);
 		for (int i = bottom; i <= top; i++)
 		{
-			glVertex2f(xHalfHeight, (i*yGap) + center.y + yOffsetMisc + yOffsetCenter);
-			glVertex2f(-xHalfHeight, (i*yGap) + center.y + yOffsetMisc + yOffsetCenter);
+
+			glVertex2Panel(xHalfWidth, (i*yGap) +  (yOffsetMisc+yOffsetCenter)%yGap);
+			glVertex2Panel(-xHalfWidth, (i*yGap) + (yOffsetMisc+yOffsetCenter)%yGap);
 		}
 		for (int i = left; i <= right; i++)
 		{
-			glVertex2f((i*xGap) + center.x + xOffsetMisc + xOffsetCenter, yHalfHeight);
-			glVertex2f((i*xGap) + center.x + xOffsetMisc + xOffsetCenter, -yHalfHeight);
+			glVertex2Panel((i*xGap ) + (xOffsetMisc+xOffsetCenter)%xGap, yHalfHeight);
+			glVertex2Panel((i*xGap)  + (xOffsetMisc+xOffsetCenter)%xGap, -yHalfHeight);
 		}
 		glEnd();
 	}
 
-	void Grid::render()
-	{
-		// Use offset to determine the total number of vertical and horizontal displayed on the screen.
-		
-		//Draw
-
-		drawPoints();
-
-
-	}
 
 	void Grid::selectTile(int x, int y)
 	{
@@ -86,7 +53,7 @@ namespace Display
 		glEnd();
 	}
 
-	void Grid::selectTileAtPoint(double x, double y)
+	void Grid::selectTileAtPoint(float x, float y)
 	{
 
 		int divX = (x + xOffsetCenter) / xGap;
@@ -109,26 +76,27 @@ namespace Display
 			glPointSize(20);
 			glColor3f(0, 1, 0);
 			glBegin(GL_POINTS);
-				glVertex2f(tileX*xGap, tileY*yGap);
+				glVertex2Panel(tileX*xGap, tileY*yGap);
 			glEnd();
 
 		glColor3f(1, 1, 1);
 	}
 
-	void Grid::selectPoint(double x, double y)
+	void Grid::selectPoint(float x, float y)
 	{
 		//Map::map[0][y + (int)Constants::MAP_LENGTH / 2][x + (int)Constants::MAP_WIDTH / 2];
 		glPointSize(20);
 		glColor3f(0, 1, 0);
 		glBegin(GL_POINTS);
-		glVertex2f(x, y);
+		glVertex2Panel(x, y);
 		glEnd();
 
 		glColor3f(1, 1, 1);
 	}
 
-	TileInfo Grid::getTileAtPoint(double x, double y)
+	TileInfo Grid::getTileAtPoint(float x, float y)
 	{
+
 		int divX = (x + xOffsetCenter) / xGap;
 		int tileX;
 
@@ -190,10 +158,19 @@ namespace Display
 		yOffsetMisc += n;
 	}
 
-	void Grid::screenToGrid(double &x, double &y)
+	void Grid::screenToOrtho(double &x, double &y)
 	{
-		double widthRatio = Constants::SCREEN_WIDTH / (width);
-		double heightRatio = Constants::SCREEN_HEIGHT / (height);
+
+
+		double x2 = x;
+		double y2 = y;
+		screenToPanel(x2,y2);
+
+		int orthoHeight = ortho_top + ((ortho_bottom > 0) ? ortho_bottom : -1 * ortho_bottom);
+		int orthoWidth = ortho_right + ((ortho_left > 0) ? ortho_left : -1 * ortho_left);
+
+		double widthRatio = Constants::SCREEN_WIDTH / (double)(orthoWidth);
+		double heightRatio = Constants::SCREEN_HEIGHT /(double) (orthoHeight);
 
 		x = (x - Constants::SCREEN_WIDTH/2) / widthRatio;
 		//x *= -1;
@@ -201,8 +178,28 @@ namespace Display
 		y *= -1;
 	}
 
-	void Grid::glVertex2Offset(int x, int y)
+	void Grid::refresh()
+	{
+	/*	screenToGridWidthRatio = Constants::SCREEN_WIDTH / (double)Constants::GRID_WIDTH;
+		screenToGridHeightRatio = Constants::SCREEN_HEIGHT / (double)Constants::GRID_HEIGHT;
+*/
+		xGap = width / zoom;
+		yGap = height / zoom;
+
+		xOffsetCenter = (xGap) / 2;
+		yOffsetCenter = (yGap) / 2;
+
+		top = (height / 2 - (yOffsetMisc%yGap)) / yGap;
+		bottom = (height / 2 + (yOffsetMisc % yGap)) / yGap *-1;
+		right = ((width - xOffsetMisc )/ 2) / xGap;
+		left = ((width - xOffsetMisc) / 2) / xGap*-1;
+	}
+
+	void Grid::glVertex2Offset(float x, float y)
 	{
 		glVertex2f(x + xOffsetCenter + xOffsetMisc, y + yOffsetMisc + yOffsetCenter);
 	}
+
+	
+
 }

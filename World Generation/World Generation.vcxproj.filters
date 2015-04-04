@@ -96,6 +96,9 @@
     <ClInclude Include="TileInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Panel.h">
+      <Filter>Header Files\Display</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Biome.cpp">

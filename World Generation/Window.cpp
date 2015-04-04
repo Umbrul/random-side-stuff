@@ -1,5 +1,6 @@
 #include "Window.h"
 
+
 using namespace Generation;
 
 namespace
@@ -91,11 +92,13 @@ void render()
 		glfwGetCursorPos(window, &xPos, &yPos);
 		double x = xPos;
 		double y = yPos;
-		grid.screenToGrid(x, y);
-
-		std::cout << "X pos: " << x << " Y pos: " << y << std::endl;
-		grid.selectPoint(x, y);
-		grid.selectTileAtPoint(x, y);
+		//grid.screenToOrtho(x, y);
+		if (grid.screenToPanel(x, y))
+		{
+			std::cout << "X pos: " << x << " Y pos: " << y << std::endl;
+			grid.selectPoint(x, y);
+			grid.selectTileAtPoint(x, y);
+		}
 	}
 	grid.render();
 
@@ -104,7 +107,7 @@ void render()
 //Seperate generation into generation, world, and display. World contains the generated info, display works with vision to determine what is visibles. Display should also use good and proper opengl.
 int main(int argc, char** argv)
 {
-	
+
 	glfwInit();
 
 
@@ -112,10 +115,10 @@ int main(int argc, char** argv)
 	glLoadIdentity();
 
 	test = Generate();
-	grid = Display::Grid();
+	grid.initiate(Constants::GRID_HEIGHT, Constants::GRID_WIDTH, -100,100);
 
 	test.perlin_sprawl();
-	
+
 	std::cout << std::endl << std::endl << "Current Seed: " << seed << std::endl;
 
 	glfwSetErrorCallback(error_callback);
@@ -145,11 +148,11 @@ int main(int argc, char** argv)
 		glfwPollEvents();
 		_sleep(10.0);
 	}
-
+	
 	char* temp = (grid.isVisible(0, 0)) ? "true" : "false";
 	TileInfo tileA = grid.getTileAtPoint(0, 0);
-	std::cout <<"Is point 0, 0 visible? " << temp << std::endl;
-	std::cout << "Tile x: " << tileA.x <<" y: "<<tileA.y<<std::endl;
+	std::cout << "Is point 0, 0 visible? " << temp << std::endl;
+	std::cout << "Tile x: " << tileA.x << " y: " << tileA.y << std::endl;
 	temp = (grid.isVisible(50, 50)) ? "true" : "false";
 	TileInfo tileB = grid.getTileAtPoint(50, 50);
 	std::cout << "Is point 50, 50 visible? " << temp << std::endl;
@@ -159,7 +162,7 @@ int main(int argc, char** argv)
 	std::cout << "Is point 120, 50 visible? " << temp << std::endl;
 	std::cout << "Tile x: " << tileC.x << " y: " << tileC.y << std::endl;
 	//test.terrain_picker_test();
-	
+
 	/*
 	int *a = 0;
 	int *b = 0;

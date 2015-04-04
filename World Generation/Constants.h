@@ -33,7 +33,7 @@ namespace Constants
 
 	//Window 
 
-	const int SCREEN_WIDTH = 700;	   // width of screen window in pixels
+	const int SCREEN_WIDTH = 900;	   // width of screen window in pixels
 	const int SCREEN_HEIGHT = 900;	   // height of screen window in pixels
 	const int GRID_WIDTH = 700;			// width of grid in pixels
 	const int GRID_HEIGHT = 700;	   // height of grid in pixels
