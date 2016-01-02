@@ -24,13 +24,8 @@ namespace Display
 	int ortho_right = 100;
 	int ortho_top = 100;
 	int ortho_bottom = -100;
+
 }
 
 
-//Utility Functions (make seperate file if this becomes to bulky)
-
-float lerp(float x, float y, float r)
-{
-	return (x * (1 - r) + y * (r));
-}
 

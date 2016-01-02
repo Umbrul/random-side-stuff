@@ -3,7 +3,7 @@
 
 #include "Constants.h"
 #include "Common.h"
-#include "Panel.h"
+#include "UIPanel.h"
 #include <GLFW\glfw3.h>
 
 namespace Display
@@ -11,7 +11,7 @@ namespace Display
 
 
 
-	class Grid : public Panel
+	class Grid : public UIPanel
 	
 	{
 	private:
@@ -46,7 +46,6 @@ namespace Display
 		void modifyXOffset(int x);
 		void modifyYOffset(int x);
 		
-		void screenToOrtho(double &x, double &y);
 
 		TileInfo getTileAtPoint(float x, float y);
 

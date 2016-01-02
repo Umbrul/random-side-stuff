@@ -31,13 +31,13 @@ namespace Display
 		for (int i = bottom; i <= top; i++)
 		{
 
-			glVertex2Panel(xHalfWidth, (i*yGap) +  (yOffsetMisc+yOffsetCenter)%yGap);
-			glVertex2Panel(-xHalfWidth, (i*yGap) + (yOffsetMisc+yOffsetCenter)%yGap);
+			glVertex2UI(xHalfWidth, (i*yGap) +  (yOffsetMisc+yOffsetCenter)%yGap);
+			glVertex2UI(-xHalfWidth, (i*yGap) + (yOffsetMisc+yOffsetCenter)%yGap);
 		}
 		for (int i = left; i <= right; i++)
 		{
-			glVertex2Panel((i*xGap ) + (xOffsetMisc+xOffsetCenter)%xGap, yHalfHeight);
-			glVertex2Panel((i*xGap)  + (xOffsetMisc+xOffsetCenter)%xGap, -yHalfHeight);
+			glVertex2UI((i*xGap ) + (xOffsetMisc+xOffsetCenter)%xGap, yHalfHeight);
+			glVertex2UI((i*xGap)  + (xOffsetMisc+xOffsetCenter)%xGap, -yHalfHeight);
 		}
 		glEnd();
 	}
@@ -76,7 +76,7 @@ namespace Display
 			glPointSize(20);
 			glColor3f(0, 1, 0);
 			glBegin(GL_POINTS);
-				glVertex2Panel(tileX*xGap, tileY*yGap);
+				glVertex2UI(tileX*xGap, tileY*yGap);
 			glEnd();
 
 		glColor3f(1, 1, 1);
@@ -88,7 +88,7 @@ namespace Display
 		glPointSize(20);
 		glColor3f(0, 1, 0);
 		glBegin(GL_POINTS);
-		glVertex2Panel(x, y);
+		glVertex2UI(x, y);
 		glEnd();
 
 		glColor3f(1, 1, 1);
@@ -158,31 +158,15 @@ namespace Display
 		yOffsetMisc += n;
 	}
 
-	void Grid::screenToOrtho(double &x, double &y)
-	{
-
-
-		double x2 = x;
-		double y2 = y;
-		screenToPanel(x2,y2);
-
-		int orthoHeight = ortho_top + ((ortho_bottom > 0) ? ortho_bottom : -1 * ortho_bottom);
-		int orthoWidth = ortho_right + ((ortho_left > 0) ? ortho_left : -1 * ortho_left);
-
-		double widthRatio = Constants::SCREEN_WIDTH / (double)(orthoWidth);
-		double heightRatio = Constants::SCREEN_HEIGHT /(double) (orthoHeight);
-
-		x = (x - Constants::SCREEN_WIDTH/2) / widthRatio;
-		//x *= -1;
-		y = (y - Constants::SCREEN_HEIGHT/2) / heightRatio;
-		y *= -1;
-	}
+	
 
 	void Grid::refresh()
 	{
 	/*	screenToGridWidthRatio = Constants::SCREEN_WIDTH / (double)Constants::GRID_WIDTH;
 		screenToGridHeightRatio = Constants::SCREEN_HEIGHT / (double)Constants::GRID_HEIGHT;
 */
+		UIPanel::refresh();
+
 		xGap = width / zoom;
 		yGap = height / zoom;
 

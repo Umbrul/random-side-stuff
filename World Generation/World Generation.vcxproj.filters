@@ -43,6 +43,12 @@
     <Filter Include="Source Files\Display">
       <UniqueIdentifier>{bd005ec0-2a59-4f36-a8fa-15e2dc8c4260}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Display\Text">
+      <UniqueIdentifier>{4cec4e37-bc07-48b4-8d17-1cd0f4e69f00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Display\Text">
+      <UniqueIdentifier>{7a9aafdf-d950-4bd3-bf14-aa860c9b622a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Biome.h">
@@ -96,7 +102,28 @@
     <ClInclude Include="TileInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Panel.h">
+    <ClInclude Include="UIText.h">
+      <Filter>Header Files\Display\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="FontLoader.h">
+      <Filter>Header Files\Display\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="UIElement.h">
+      <Filter>Header Files\Display</Filter>
+    </ClInclude>
+    <ClInclude Include="UIPanel.h">
+      <Filter>Header Files\Display</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics.h">
+      <Filter>Header Files\Display</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders.h">
+      <Filter>Header Files\Display</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorContainer.h">
       <Filter>Header Files\Display</Filter>
     </ClInclude>
   </ItemGroup>
@@ -131,5 +158,19 @@
     <ClCompile Include="Common.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FontLoader.cpp">
+      <Filter>Source Files\Display\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="UIPanel.cpp">
+      <Filter>Source Files\Display</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics.cpp">
+      <Filter>Source Files\Display</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Marlboro.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
   </ItemGroup>
 </Project>
